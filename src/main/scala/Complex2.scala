@@ -21,8 +21,7 @@ object Complex2 {
     ).toDF("review_id", "rating")
 
      val result = reviews.withColumn("feedback", when(col("rating") < 3, "Bad").when(col("rating") === 3 || col("rating") === 4, "Good").otherwise("Excellent")
-    ).show()
-    reviews.withColumn("_positive",when(col("rating") >= 3 , true).otherwise(false)
+    ).withColumn("_positive",when(col("rating") >= 3 , true).otherwise(false)
     ).show()
   }
 }
